@@ -1,27 +1,12 @@
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.List;
 
 import model.domain.ContaImportacao;
 
-public class ProcessadoraConta {
+public class ProcessadoraConta implements ProcessadorLinha<ContaImportacao> {
 	
-	public List<ContaImportacao> processaConta(String arquivo) throws IOException,ParseException,FileNotFoundException{
-		LeituraArquivo leitura = new LeituraArquivo();
-		List<ContaImportacao> listaConta = new ArrayList<>();		
-		List<String> listaString = leitura.lerArquivo(arquivo);
-		//TODO implementar
-		String cabecalho = listaString.get(0);
-		listaString.remove(0);
-		for (String linha: listaString) {
-			listaConta.add(getLinhaConta(linha));
-		}
-		return listaConta;
-	}
-
-	private ContaImportacao getLinhaConta(String linha) throws ParseException {
+	@Override
+	public ContaImportacao getLinha(String linha) throws ParseException {
 		ContaImportacao conta = new ContaImportacao();
 		conta.setTipo(linha.charAt(1));
 		conta.setCpf(linha.substring(2,13));						
@@ -38,10 +23,13 @@ public class ProcessadoraConta {
 	
 	public static void main(String args[]) throws Exception {
 		String dir = System.getProperty("user.dir") + "/arquivos/";
-		ProcessadoraConta processadora = new ProcessadoraConta();
+		ProcessadoraArquivo<ContaImportacao> processadora = 
+				new ProcessadoraArquivo<>(new ProcessadoraConta());
 		List<ContaImportacao> contas = 
-				processadora.processaConta(dir+"Conta_20140220.txt");
-		System.out.println(contas);		
+				processadora.processaArquivo(dir+"Conta_20140220.txt");
+		System.out.println(contas);	
 	}
+
+	
 
 }

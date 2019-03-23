@@ -1,6 +1,6 @@
 package model.domain;
 
-public class ContaImportacao {
+public class ContaImportacao extends Arquivo {
 	
 	private char tipo;
 	
@@ -11,6 +11,10 @@ public class ContaImportacao {
 	private Integer diaVencimentoFatura;
 	
 	private String numeroConta;
+
+	public ContaImportacao() {
+		super();
+	}
 
 	public char getTipo() {
 		return tipo;

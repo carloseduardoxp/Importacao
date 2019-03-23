@@ -2,7 +2,7 @@ package model.domain;
 
 import java.util.Date;
 
-public class ClienteImportacao {
+public class ClienteImportacao extends Arquivo {
 	
 	//TODO needs refactoring
 	private char tipo;

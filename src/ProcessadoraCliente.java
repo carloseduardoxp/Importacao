@@ -1,28 +1,13 @@
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 import model.domain.ClienteImportacao;
 
-public class ProcessadoraCliente {
+public class ProcessadoraCliente implements ProcessadorLinha<ClienteImportacao> {
 	
-	public List<ClienteImportacao> processaCliente(String arquivo) throws IOException,ParseException,FileNotFoundException{
-		LeituraArquivo leitura = new LeituraArquivo();
-		List<ClienteImportacao> listaCliente = new ArrayList<>();		
-		List<String> listaString = leitura.lerArquivo(arquivo);
-		//TODO implementar
-		String cabecalho = listaString.get(0);
-		listaString.remove(0);
-		for (String linha: listaString) {
-			listaCliente.add(getLinhaCliente(linha));
-		}
-		return listaCliente;
-	}
-
-	private ClienteImportacao getLinhaCliente(String linha) throws ParseException {
+	@Override
+	public ClienteImportacao getLinha(String linha) throws ParseException {
 		ClienteImportacao cliente = new ClienteImportacao();
 		cliente.setTipo(linha.charAt(1));
 		cliente.setCpf(linha.substring(2,13));
@@ -40,11 +25,14 @@ public class ProcessadoraCliente {
 	
 	public static void main(String args[]) throws Exception {
 		String dir = System.getProperty("user.dir") + "/arquivos/";
-		ProcessadoraCliente processadora = new ProcessadoraCliente();
+		ProcessadoraArquivo<ClienteImportacao> processadora = 
+				new ProcessadoraArquivo<>(new ProcessadoraCliente());
 		List<ClienteImportacao> clientes = 
-				processadora.processaCliente(dir+"Cliente_20140220.txt");
+				processadora.processaArquivo(dir+"Cliente_20140220.txt");
 		System.out.println(clientes);		
 	}
+
+	
 	
 
 }
