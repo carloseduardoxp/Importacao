@@ -1,0 +1,4 @@
+1600
+2I06045064343Fulano da Silva               Rua XXX 40                    Jardim Rosa                   Uberlandia                    MG19022014181040
+2I05029054323Ciclano da Silva              Rua YYY 50                    Independencia                 Ribeirao Preto                SP19022014164560
+2A45029954876______________________________Rua WWW 60                    ______________________________Boa Vista                     RR19022014123045
