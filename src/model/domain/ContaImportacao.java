@@ -1,6 +1,6 @@
 package model.domain;
 
-public class ContaImportacao extends Arquivo {
+public class ContaImportacao implements Lote {
 	
 	private char tipo;
 	
@@ -11,6 +11,12 @@ public class ContaImportacao extends Arquivo {
 	private Integer diaVencimentoFatura;
 	
 	private String numeroConta;
+	
+	@Override
+	public String getTipoLote() {
+		return "Conta";
+	}
+
 
 	public ContaImportacao() {
 		super();

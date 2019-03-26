@@ -2,7 +2,7 @@ package model.domain;
 
 import java.util.Date;
 
-public class ClienteImportacao extends Arquivo {
+public class ClienteImportacao implements Lote {
 	
 	//TODO needs refactoring
 	private char tipo;
@@ -21,7 +21,10 @@ public class ClienteImportacao extends Arquivo {
 	
 	private Date dataHoraCadastro;
 	
-	
+	@Override
+	public String getTipoLote() {
+		return "Cliente";
+	}
 
 	public String getEstado() {
 		return estado;
@@ -92,8 +95,7 @@ public class ClienteImportacao extends Arquivo {
 		return "ClienteImportacao [tipo=" + tipo + ", cpf=" + cpf + ", nome=" + nome + ", endereco=" + endereco
 				+ ", bairro=" + bairro + ", cidade=" + cidade + ", estado=" + estado + ", dataHoraCadastro="
 				+ dataHoraCadastro + "]";
-	}
-	
+	}	
 	
 	
 	

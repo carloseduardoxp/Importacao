@@ -24,7 +24,7 @@ public class ProcessadoraConta implements ProcessadorLinha<ContaImportacao> {
 	public static void main(String args[]) throws Exception {
 		String dir = System.getProperty("user.dir") + "/arquivos/";
 		ProcessadoraArquivo<ContaImportacao> processadora = 
-				new ProcessadoraArquivo<>(new ProcessadoraConta());
+				new ProcessadoraArquivo<ContaImportacao>(new ProcessadoraConta());
 		List<ContaImportacao> contas = 
 				processadora.processaArquivo(dir+"Conta_20140220.txt");
 		System.out.println(contas);	

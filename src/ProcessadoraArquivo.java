@@ -4,7 +4,9 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProcessadoraArquivo<E> {
+import model.domain.Lote;
+
+public class ProcessadoraArquivo<E extends Lote> {
 	
 	private ProcessadorLinha<E> processa;
 
@@ -12,13 +14,13 @@ public class ProcessadoraArquivo<E> {
 		this.processa = processa;
 	}
 
-	public List<E> processaArquivo(String arquivo) 
+	public List<E> processaArquivo(String arquivo)
 			throws IOException,ParseException,FileNotFoundException{
 		LeituraArquivo leitura = new LeituraArquivo();
-		List<E> listaConta = new ArrayList<>();		
+		List<E> listaConta = new ArrayList<>();
 		List<String> listaString = leitura.lerArquivo(arquivo);
 		//TODO implementar
-		String cabecalho = listaString.get(0);
+		String cabecalho = listaString.get(0);		
 		listaString.remove(0);
 		for (String linha: listaString) {
 			listaConta.add(processa.getLinha(linha));
