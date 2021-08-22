@@ -14,6 +14,8 @@ public class LeituraArquivo {
 		FileReader fr = new FileReader(file);
 		BufferedReader br = new BufferedReader(fr);
 		return br;
+		
+		// novo comentário
 	}
 	
 	public List<String> lerArquivo(String arquivo) throws FileNotFoundException,IOException {
