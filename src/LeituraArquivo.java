@@ -9,15 +9,19 @@ import java.util.List;
 public class LeituraArquivo {
 
 	public BufferedReader abrirArquivo(String arquivo) throws FileNotFoundException {
+		//teste 
 		File file = new File(arquivo);
 		FileReader fr = new FileReader(file);
 		BufferedReader br = new BufferedReader(fr);
 		return br;
+		
+		// novo comentário
 	}
 	
 	public List<String> lerArquivo(String arquivo) throws FileNotFoundException,IOException {
 		BufferedReader br = abrirArquivo(arquivo);
 		List<String> lista = new ArrayList<>();
+		//lendo arquivo
 		while (br.ready()) {
 			lista.add(br.readLine());
 		}
