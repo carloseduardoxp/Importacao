@@ -9,6 +9,7 @@ import java.util.List;
 public class LeituraArquivo {
 
 	public BufferedReader abrirArquivo(String arquivo) throws FileNotFoundException {
+		//teste 
 		File file = new File(arquivo);
 		FileReader fr = new FileReader(file);
 		BufferedReader br = new BufferedReader(fr);
