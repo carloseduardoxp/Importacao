@@ -21,6 +21,7 @@ public class LeituraArquivo {
 	public List<String> lerArquivo(String arquivo) throws FileNotFoundException,IOException {
 		BufferedReader br = abrirArquivo(arquivo);
 		List<String> lista = new ArrayList<>();
+		//lendo arquivo
 		while (br.ready()) {
 			lista.add(br.readLine());
 		}
